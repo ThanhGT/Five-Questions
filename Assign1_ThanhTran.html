@@ -1,0 +1,171 @@
+<!-- This program asks the user five questions and for each question answered correctly grants the user 1 point. -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>5 Questions</title>
+
+<!-- CSS styles     -->
+    <style>
+        .correct{
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect{
+            color: red;
+            font-weight: bold;
+        }
+
+        p #id {
+          color: blue;
+        }
+    </style>
+
+  </head>
+  <body>
+      <h1> 5 Questions </h1>
+      <br>
+      <h4> Please be aware for true/false questions. OK means TRUE, while cancel means FALSE</h4>
+      <h4> Question 1 </h4>
+      <p> What is the pre-requisite for this course? <button onclick = "myFunction();">Attempt</button><span id = "result"> Checking.... </span></p>
+      <h4> Question 2 </h4>
+      <p> Javascript is another way of saying Java. <button onclick = "myFunction2();">Attempt</button><span id = "result2"> Checking.... </span></p>
+      <h4> Question 3 </h4>
+      <p> How many credits can you obtain from this course? <button onclick = "myFunction3();">Attempt</button><span id = "result3"> Checking.... </span></p>
+      <h4> Question 4 </h4>
+      <p> Javascript is a weakly type language. <button onclick = "myFunction4();">Attempt</button><span id = "result4"> Checking.... </span></p>
+      <h4> Question 5 </h4>
+      <p> How old is javascript? <button onclick = "myFunction5();">Attempt</button><span id = "result5"> Checking.... </span></p>
+      <p> Total: <span id ="Total"></span></p>
+      <script type="text/javascript">
+
+          var count = 0;   // initialize count to 0
+          var totalField = document.getElementById('Total');  // point to memory location of HTML element with id Total
+          var q1Done = q2Done = q3Done = q4Done = q5Done = 0; // initailize all variables to 0
+          totalField.innerHTML = count; // change the content of what is in HTML element of id Total
+
+    //  function that defines question 1
+      function myFunction() {
+
+          var q1 = prompt ('What is the pre-requisite for this course? (state the full course code ex: MATH18584 & COMM13729)');
+          var a = q1.toUpperCase(); // turns all letters to upperCase
+          var myResult = document.getElementById('result'); // assigns myResult to the content that has an ID of result
+          if (a == 'SYST10049 & PROG10082') {
+              myResult.innerHTML = " Correct! "; // changes content to correct
+              myResult.classList.add ('correct'); // adds the string correct
+              myResult.classList.remove ('incorrect'); // removes the string incorrect
+              q1Done = 1;   // q1 has been answered so add 1 to the score count
+              update(); // calls the function update
+          } else {
+              myResult.innerHTML = " Incorrect! ";  // changes content to incorrect
+              myResult.classList.add ('incorrect'); // adds the string incorrect
+              myResult.classList.remove ('correct');  // removes the string correct
+              q1Done = 0; // q1 has been answered incorrectly so do not add anything to the score count
+              update(); // calls the function update
+              }
+      }
+      // function that defines question 2
+      function myFunction2() {
+
+            var q2 = confirm ('Javascript is another way of saying Java (True/False)');
+            var myResult2 = document.getElementById('result2'); // assigns myResult to the content that has an ID of result2
+
+            if (q2 == false) {
+              myResult2.innerHTML = " Correct! "; // changes content to correct
+              myResult2.classList.add ('correct');  // adds the string correct
+              myResult2.classList.remove ('incorrect'); // removes the string incorrect
+              q2Done = 1; // q1 has been answered so add 1 to the score count
+              update(); // calls the function update
+            } else {
+              myResult2.innerHTML = " Incorrect! ";  // changes content to incorrect
+              myResult2.classList.add ('incorrect');   // adds the string incorrect
+              myResult2.classList.remove ('correct'); // removes the string correct
+              q2Done = 0;
+              update();
+            }
+      }
+
+      // function that defines question 3
+      function myFunction3() {
+
+          var q3 = prompt ('How many credits can you obtain from this course? (enter a number ONLY)');
+          var c = q3;
+          var myResult3 = document.getElementById('result3'); // assigns myResult to the content that has an ID of result3
+
+          while(isNaN(c)){
+            c = prompt ('Not a value. Please enter a number');
+          }
+          if (c == 3) {
+              myResult3.innerHTML = " Correct! "   // changes content to correct
+              myResult3.classList.add ('correct');  // adds the string correct
+              myResult3.classList.remove ('incorrect'); // removes the string incorrect
+              q3Done = 1; // q1 has been answered so add 1 to the score count
+              update(); // calls the function update
+          } else {
+             myResult3.innerHTML = " Incorrect! ";   // changes content to incorrect
+             myResult3.classList.add ('incorrect'); // adds the string incorrect
+             myResult3.classList.remove ('correct');  // removes the string correct
+             q3Done = 0;
+             update();  // calls the function update
+          }
+      }
+
+      // function that defines question 4
+      function myFunction4() {
+
+         var q4 = confirm ('Javascript is a weakly type language. (True/False)');
+         var myResult4 = document.getElementById('result4');  // assigns myResult to the content that has an ID of result4
+         if (q4 == true) {
+           myResult4.innerHTML = " Correct! ";   // changes content to correct
+           myResult4.classList.add ('correct'); // adds the string correct
+           myResult4.classList.remove ('incorrect');  // removes the string incorrect
+           q4Done = 1;  // q1 has been answered so add 1 to the score count
+           update();  // calls the function update
+         } else {
+           myResult4.innerHTML = " Incorrect! ";  // changes content to incorrect
+           myResult4.classList.add ('incorrect'); // adds the string incorrect
+           myResult4.classList.remove ('correct');  // removes the string correct
+           q4Done = 0;
+           update();  // calls the function update
+         }
+      }
+
+
+    // function that defines question 5
+    function myFunction5() {
+
+        var q5 = prompt ('How old is javascript? (enter a number ONLY)');
+        var e = q5;
+        var myResult5 = document.getElementById('result5'); // assigns myResult to the content that has an ID of result5
+        // while loop that occurs if the input entered is not a number
+        while(isNaN(e)){
+          e = prompt ('Not a value. Please enter a number');
+        }
+        if (e == 23) {
+            myResult5.innerHTML = " Correct! "    // changes content to correct
+            myResult5.classList.add ('correct');  // adds the string correct
+            myResult5.classList.remove ('incorrect'); // removes the string incorrect
+            //console.count;
+            q5Done = 1;
+            update(); // calls the function update
+
+          } else {
+            myResult5.innerHTML = " Incorrect! "; // changes content to incorrect
+            myResult5.classList.add ('incorrect');  // adds the string incorrect
+            myResult5.classList.remove ('correct'); // removes the string correct
+            q5Done = 0;
+            update(); // calls the function update
+          }
+        }
+
+    // function that updates the total score
+    function update() {
+      count = q1Done + q2Done + q3Done + q4Done + q5Done;
+      totalField.innerHTML = count; // changes the content of totalField to count
+    }
+
+    </script>
+
+  </body>
+</html>
